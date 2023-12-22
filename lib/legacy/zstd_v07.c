@@ -460,7 +460,7 @@ typedef enum { BITv07_DStream_unfinished = 0,
                /* 1,2,4,8 would be better for bitmap combinations, but slows down performance a bit ... :( */
 
 MEM_STATIC size_t   BITv07_initDStream(BITv07_DStream_t* bitD, const void* srcBuffer, size_t srcSize);
-MEM_STATIC size_t   BITv07_readBits(BITv07_DStream_t* bitD, unsigned nbBits);
+MEM_STATIC size_t   BITv07_readBits(BITv07_DStream_t* bitD, U32 nbBits);
 MEM_STATIC BITv07_DStream_status BITv07_reloadDStream(BITv07_DStream_t* bitD);
 MEM_STATIC unsigned BITv07_endOfDStream(const BITv07_DStream_t* bitD);
 
@@ -469,7 +469,7 @@ MEM_STATIC unsigned BITv07_endOfDStream(const BITv07_DStream_t* bitD);
 /*-****************************************
 *  unsafe API
 ******************************************/
-MEM_STATIC size_t BITv07_readBitsFast(BITv07_DStream_t* bitD, unsigned nbBits);
+MEM_STATIC size_t BITv07_readBitsFast(BITv07_DStream_t* bitD, U32 nbBits);
 /* faster, but works only if nbBits >= 1 */
 
 

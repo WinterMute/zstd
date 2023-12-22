@@ -789,7 +789,7 @@ typedef enum { BITv06_DStream_unfinished = 0,
                /* 1,2,4,8 would be better for bitmap combinations, but slows down performance a bit ... :( */
 
 MEM_STATIC size_t   BITv06_initDStream(BITv06_DStream_t* bitD, const void* srcBuffer, size_t srcSize);
-MEM_STATIC size_t   BITv06_readBits(BITv06_DStream_t* bitD, unsigned nbBits);
+MEM_STATIC size_t   BITv06_readBits(BITv06_DStream_t* bitD, U32 nbBits);
 MEM_STATIC BITv06_DStream_status BITv06_reloadDStream(BITv06_DStream_t* bitD);
 MEM_STATIC unsigned BITv06_endOfDStream(const BITv06_DStream_t* bitD);
 
@@ -798,7 +798,7 @@ MEM_STATIC unsigned BITv06_endOfDStream(const BITv06_DStream_t* bitD);
 /*-****************************************
 *  unsafe API
 ******************************************/
-MEM_STATIC size_t BITv06_readBitsFast(BITv06_DStream_t* bitD, unsigned nbBits);
+MEM_STATIC size_t BITv06_readBitsFast(BITv06_DStream_t* bitD, U32 nbBits);
 /* faster, but works only if nbBits >= 1 */
 
 
@@ -1770,10 +1770,10 @@ HUFv06_decompress() does the following:
 3. decode 1 or 4 segments in parallel using HUFv06_decompressSXn_usingDTable
 */
 size_t HUFv06_readDTableX2 (unsigned short* DTable, const void* src, size_t srcSize);
-size_t HUFv06_readDTableX4 (unsigned* DTable, const void* src, size_t srcSize);
+size_t HUFv06_readDTableX4 (U32* DTable, const void* src, size_t srcSize);
 
 size_t HUFv06_decompress4X2_usingDTable(void* dst, size_t maxDstSize, const void* cSrc, size_t cSrcSize, const unsigned short* DTable);
-size_t HUFv06_decompress4X4_usingDTable(void* dst, size_t maxDstSize, const void* cSrc, size_t cSrcSize, const unsigned* DTable);
+size_t HUFv06_decompress4X4_usingDTable(void* dst, size_t maxDstSize, const void* cSrc, size_t cSrcSize, const U32* DTable);
 
 
 /* single stream variants */
@@ -1781,7 +1781,7 @@ size_t HUFv06_decompress1X2 (void* dst, size_t dstSize, const void* cSrc, size_t
 size_t HUFv06_decompress1X4 (void* dst, size_t dstSize, const void* cSrc, size_t cSrcSize);   /* double-symbol decoder */
 
 size_t HUFv06_decompress1X2_usingDTable(void* dst, size_t maxDstSize, const void* cSrc, size_t cSrcSize, const unsigned short* DTable);
-size_t HUFv06_decompress1X4_usingDTable(void* dst, size_t maxDstSize, const void* cSrc, size_t cSrcSize, const unsigned* DTable);
+size_t HUFv06_decompress1X4_usingDTable(void* dst, size_t maxDstSize, const void* cSrc, size_t cSrcSize, const U32* DTable);
 
 
 
